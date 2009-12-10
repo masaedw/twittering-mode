@@ -1,3 +1,86 @@
+2009-12-07  Naohiro Aota  <naota@elisp.net>
+
+	* twittering-mode.el (twittering-http-get-default-sentinel): Check
+	if buffer live-p before killing it.
+
+2009-12-07  Yuto Hayamizu  <y.hayamizu@gmail.com>
+
+	* twittering-mode.el (twittering-read-username-with-completion):
+	rename from `twittering-get-username-with-completion'
+	(twittering-make-list-from-assoc): simplified
+	(twittering-other-user-timeline-interactive): changed init string
+	to nil
+
+2009-12-06  NAKAYA Toshiharu  <toshiharu.nakaya@gmail.com>
+
+	* twittering-mode.el (twittering-retrieve-image-without-wget): set
+	require-final-newline is nil locally since emacs can not save icon
+	images because of "error in process filter: save-buffer: Text is
+	read-only".
+
+2009-12-06  Tadashi MATSUO  <matsuo@i.ci.ritsumei.ac.jp>
+
+	* twittering-mode.el (twittering-use-wget): new variable for
+	specifying whether the external command `wget' should be used.
+	(twittering-retrieve-image): new function for retrieving icon
+	images with/without wget.
+	(twittering-get-twits): retrieve images with
+	`twittering-retrieve-image'.
+	(twittering-use-convert): add a new variable specifying whether
+	the external command `convert' should be used.
+	(twittering-make-display-spec-for-icon): new function for
+	generating properties for icon with/without cropping the image.
+	(twittering-retrieve-image-without-wget): write an image as binary
+	explicitly.
+
+2009-12-05  Satoshi Yatagawa  <yata_github@y.hauN.org>
+
+	* twittering-mode.el (twittering-get-username-with-completion):
+	New defun as a wrapper function for read-from-minibuffer.
+	(twittering-follow): Call it instead of read-from-minibuffer.
+	(twittering-other-user-timeline-interactive): Likewise.
+	(twittering-other-user-list-interactive): Likewise.
+
+	* twittering-mode.el (twittering-make-list-from-assoc): New defun.
+
+2009-12-04  Yuto Hayamizu  <y.hayamizu@gmail.com>
+
+	* test/test-twittering-mode.el (sign-string): add test
+
+	* twittering-mode.el (twittering-current-hashtag): docstring
+	(twittering-idle-time): removed (unused?)
+
+2009-12-03  Tadasohi MATSUO  <tad@mymail.twin.jp>
+
+	* twittering-mode.el (twittering-mode-map): define bindings so
+	as to be also valid even on non-window terminal.
+
+2009-12-02  Naohiro Aota  <naota@elisp.net>
+
+	* twittering-mode.el (twittering-icon-path): New funciton.
+	(twittering-format-status): Use it.
+	(twittering-get-twits): Ditto; wget now invoked for each icon.
+
+2009-12-01  Satoshi Yatagawa  <yata_github@y.hauN.org>
+
+	* twittering-mode.el (twittering-update-status-from-minibuffer):
+	Add more strict length check for status.
+	
+	* twittering-mode.el (twittering-status-not-blank-p): New defun to
+	separate a check code from twittering-update-status-if-not-blank.
+	(twittering-update-status-from-minibuffer): Integrate a post code
+	from twittering-update-status-if-not-blank.
+	(twittering-update-status-if-not-blank): Remove.
+
+2009-11-30  Yuto Hayamizu  <y.hayamizu@gmail.com>
+
+	* twittering-mode.el (twittering-max-number-of-tweets-on-retrieval)
+	(twittering-number-of-tweets-on-retrieval): add
+	(twittering-http-get-list-index-sentinel): restore the variable
+	'indexes' removed by mistake
+	(twittering-get-twits): use 'twittering-number-of-tweets-on-retrieval'
+	These changes were made by cvmat. thanks.
+
 2009-11-29  Yuto Hayamizu  <y.hayamizu@gmail.com>
 
 	* twittering-mode.el (twittering-status-to-status-datum): defined
@@ -255,7 +338,7 @@
 2009-03-09  Tsuyoshi CHO  <Tsuyoshi.CHO+develop@Gmail.com>
 
 	* twittering-mode.el (twittering-mode): Add keybind in Major mode
-	docstirng by Alex Schröder <kensanata@gmail.com>
+	docstring by Alex Schröder <kensanata@gmail.com>
 
 2008-08-03  Tsuyoshi CHO  <Tsuyoshi.CHO+develop@Gmail.com>
 
